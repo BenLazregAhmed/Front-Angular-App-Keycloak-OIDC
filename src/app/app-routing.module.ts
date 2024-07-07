@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CustomersComponent } from './customers/customers.component';
+import { ProductsComponent } from './products/products.component';
+import { AuthGuard } from './guards/auth.guard';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path : 'customers' , component :CustomersComponent},
+  {path : 'products' , component :ProductsComponent,canActivate :[AuthGuard],data : {roles : ['ADMIN']}},
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
